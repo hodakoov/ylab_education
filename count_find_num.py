@@ -38,6 +38,8 @@ def count_find_num(factors, limit):
 
 
 """
+Для проверки:
+
 primesL = [2, 3]
 limit = 200
 assert count_find_num(primesL, limit) == [13, 192]
