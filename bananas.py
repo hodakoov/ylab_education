@@ -20,25 +20,25 @@ b---anana
 
 
 def bananas(s, word='banana'):
-    ret = []
+    result = []
 
     if word == '':
-        ret.append(''.rjust(len(s), '-'))
-        return ret
+        result.append(''.rjust(len(s), '-'))
+        return result
 
-    for si in range(len(s)):
-        if word[0] == s[si]:
-            left_s = ''.rjust(si, '-') + s[si]
+    for i in range(len(s)):
+        if word[0] == s[i]:
+            left = ''.rjust(i, '-') + s[i]
 
-            if s[si + 1:] == '' and word[1:] == '':
-                ret.append(left_s)
+            if s[i + 1:] == '' and word[1:] == '':
+                result.append(left)
 
             else:
-                right_s_list = bananas(s[si + 1:], word[1:])
-                for right_s in right_s_list:
-                    ret.append(left_s + right_s)
+                right = bananas(s[i + 1:], word[1:])
+                for right_s in right:
+                    result.append(left + right_s)
 
-    return set(ret)
+    return set(result)
 
 
 """
