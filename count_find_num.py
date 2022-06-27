@@ -13,30 +13,21 @@ ___________________________________________________________
           490                         [2, 5, 7, 7]
 """
 
+from math import prod
+
 
 def count_find_num(factors, limit):
-    factors_mult = 1
-    count = 0
-    maximum = 0
-
-    for i in factors:
-        factors_mult *= i
-
-    f = (limit // factors_mult) + 1
-
-    for j in range(1, f):
-        result = j
-        for k in factors:
-            while result % k == 0:
-                result //= k
-        if result == 1:
-            count += 1
-            maximum = j * factors_mult
-    if count == 0:
+    products = [prod(factors)]
+    for f in factors:
+        for p in products:
+            p *= f
+            while p <= limit and p not in products:
+                products.append(p)
+                p *= f
+    if products[0] <= limit:
+        return [len(products), max(products)] 
+    else:
         return []
-    return [count, maximum]
-
-
 """
 Для проверки:
 
