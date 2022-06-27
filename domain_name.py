@@ -5,16 +5,11 @@ url = "http://www.zombie-bites.com"         -> domain name = "zombie-bites"
 url = "https://www.cnet.com"                -> domain name = "cnet"
 """
 
-
-def domain_name(url: str):
-    if 'www' in url:
-        url = url[(url.find('.')) + 1:]
-        return url[:(url.rfind('.'))]
-
-    else:
-        while '.' in url:
-            url = url[:url.rfind('.')]
-        return url[url.find('/') + 2:]
+def domain_name(url):
+    url = url.replace("http://", "")
+    url = url.replace("https://", "")
+    url = url.replace("www.", "")
+    return url.split('.')[0]
 
 
 """
